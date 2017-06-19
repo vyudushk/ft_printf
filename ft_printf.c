@@ -6,8 +6,12 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/16 11:39:40 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/19 14:07:16 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdarg.h>
 
+int		ft_printf(const char *input, ...)
+{
+}
