@@ -1,28 +1,33 @@
-LIB			= libftprintf.a
-FILENAMES	= ft_printf.c
+NAME		= libftprintf.a
+FILENAMES	= ft_printf.c ft_itoa_base.c
 HEADER		= .
+CC			= gcc
 FLAGS		= -Wall -Wextra -Werror
+LIBFT		= libft/libft.a
 
-SRC			= $($(FILENAMES))
+SRC			= $(addprefix src/, $(FILENAMES))
 OBJ			= $(addprefix build/, $(FILENAMES:.c=.o))
 
 .PHONY: all clean fclean re test
 
-all : $(LIB)
+all : $(LIBFT) $(NAME)
 
-$(LIB): $(OBJ)
-	ar rc $(LIB) $(OBJ)
+$(OBJ): $(SRC) | build
+	gcc $(FLAGS) -c -I$(HEADER) -I libft $(SRC)
+	mv $(FILENAMES:.c=.o) build
+
+$(NAME): $(LIBFT) $(OBJ)
+	ar rc $(NAME) $(OBJ) $(LIBFT)
+
+$(LIBFT):
 	make -C libft
-
-build/%.o: %.c | build
-	gcc $(FLAGS) -I $(HEADER) -I libft -I. -c $^ -o $@
 
 build:
 	mkdir build
 
 clean:
 	rm -rf build
-	rm -f $(LIB)
+	rm -f $(NAME)
 	make fclean -C libft
 
 fclean: clean

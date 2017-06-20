@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   tab.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/19 17:13:08 by vyudushk         ###   ########.fr       */
+/*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
+/*   Updated: 2017/06/19 17:16:52 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
+#include "libft.h"
 
-int		ft_printf(const char *input, ...)
+void	ft_printtab(int tab, char *str, int mode)
 {
-	va_list	args;
-
-	va_start(args, input);
+	tab = tab - ft_strlen(str);
+	if (mode == 1)
+		ft_putstr(str);
+	while (tab--)
+	{
+		ft_putchar(' ');
+		if (tab < 0)
+			break ;
+	}
+	if (mode == 0)
+		ft_putstr(str);
+	ft_putchar(' ');
 }

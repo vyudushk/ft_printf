@@ -6,11 +6,12 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 08:06:58 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/19 14:56:28 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/19 16:43:47 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft.h"
 
 char	*setup(int i, int *val, int base)
 {
@@ -37,8 +38,8 @@ char	*ft_itoa_base(int value, int base)
 	char	*res;
 
 	if (value == -2147483648 || value == 0)
-		return ((val == 0) ? "0" : "-2147483648");
-	bases = ft_strnew("0123456789ABCDEF");
+		return ((value == 0) ? "0" : "-2147483648");
+	bases = ft_strdup("0123456789ABCDEF");
 	i = 0;
 	val = value;
 	if (value < 0)
@@ -49,7 +50,7 @@ char	*ft_itoa_base(int value, int base)
 		value = value / base;
 	}
 	i--;
-	if (res = setup(i, &val, base) == 0)
+	if ((res = setup(i, &val, base)) == 0)
 		return (NULL);
 	while (i >= 0)
 		res[val++] = bases[almost[i--]];
