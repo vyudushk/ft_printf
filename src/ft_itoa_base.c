@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 08:06:58 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/19 16:43:47 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/21 04:07:21 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,26 @@ char	*setup(int i, int *val, int base)
 	return (res);
 }
 
-char	*ft_itoa_base(int value, int base)
+void	save_line(int *val, int *value, int *i)
+{
+	*val = *value;
+	*i = 0;
+	if (*value < 0)
+		*value = *value * -1;
+}
+
+char	*set_bases(int set)
+{
+	char	*res;
+
+	if (set)
+		res = ft_strdup("0123456789ABCDEF");
+	else
+		res = ft_strdup("0123456789abcdef");
+	return (res);
+}
+
+char	*ft_itoa_base(int value, int base, int set)
 {
 	char	*bases;
 	int		almost[64];
@@ -39,11 +58,8 @@ char	*ft_itoa_base(int value, int base)
 
 	if (value == -2147483648 || value == 0)
 		return ((value == 0) ? "0" : "-2147483648");
-	bases = ft_strdup("0123456789ABCDEF");
-	i = 0;
-	val = value;
-	if (value < 0)
-		value = value * -1;
+	bases = set_bases(set);
+	save_line(&val, &value, &i);
 	while (value != 0)
 	{
 		almost[i++] = value % base;
@@ -55,5 +71,40 @@ char	*ft_itoa_base(int value, int base)
 	while (i >= 0)
 		res[val++] = bases[almost[i--]];
 	res[val] = 0;
+	free(bases);
+	return (res);
+}
+
+void	usave_line(size_t *val, size_t value, int *i)
+{
+	*val = value;
+	*i = 0;
+}
+
+char	*ft_uitoa_base(size_t value, int base, int set)
+{
+	char	*bases;
+	int		almost[64];
+	int		i;
+	size_t	val;
+	char	*res;
+
+	if (value == 0)
+		return (0);
+	bases = set_bases(set);
+	usave_line(&val, value, &i);
+	while (value != 0)
+	{
+		almost[i++] = value % base;
+		value = value / base;
+	}
+	i--;
+	if ((res = malloc(i * sizeof(char))) == 0)
+		return (NULL);
+	val = 0;
+	while (i >= 0)
+		res[val++] = bases[almost[i--]];
+	res[val] = 0;
+	free(bases);
 	return (res);
 }

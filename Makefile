@@ -31,7 +31,7 @@ $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ) 
 
 build/%.o: src/%.c | build
-	gcc $(FLAGS) -I $(HEADER) -c $^ -o $@
+	gcc -g $(FLAGS) -I $(HEADER) -c $^ -o $@
 
 build:
 	mkdir build
@@ -45,6 +45,7 @@ debug: $(NAME)
 clean:
 	rm -rf build
 	rm -f runme
+	rm -rf runtest.dSYM
 	rm -f $(TEST)
 
 fclean: clean
