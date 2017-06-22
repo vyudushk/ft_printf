@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/20 16:07:48 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/21 04:04:06 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/21 17:24:29 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFTPRINTF_H
 
 # include <stdarg.h>
-
+# include <stdlib.h>
 # include "libft.h"
 
 # define FRONT 0
@@ -29,8 +29,21 @@ typedef struct s_flag
 	int	space;
 }				t_flag;
 
-int		ft_printf(const char *input, ...);
-char	*ft_itoa_base(int value, int base, int set);
-char	*ft_uitoa_base(size_t value, int base, int set);
+typedef struct	s_length
+{
+	int	hh;
+	int	h;
+	int	l;
+	int	ll;
+	int	j;
+	int	z;
+}				t_length;
+
+int			ft_printf(const char *input, ...);
+char		*ft_itoa_base(intmax_t value, int base, int set);
+char		*ft_uitoa_base(size_t value, int base, int set);
+
+intmax_t	set_cast(t_length len, intmax_t castme);
+uintmax_t	uset_cast(t_length len, uintmax_t castme);
 
 #endif

@@ -6,14 +6,14 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 08:06:58 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/21 04:07:21 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/21 17:38:51 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-char	*setup(int i, int *val, int base)
+char	*setup(int i, intmax_t *val, int base)
 {
 	char	*res;
 
@@ -29,7 +29,7 @@ char	*setup(int i, int *val, int base)
 	return (res);
 }
 
-void	save_line(int *val, int *value, int *i)
+void	save_line(intmax_t *val, intmax_t *value, int *i)
 {
 	*val = *value;
 	*i = 0;
@@ -48,13 +48,13 @@ char	*set_bases(int set)
 	return (res);
 }
 
-char	*ft_itoa_base(int value, int base, int set)
+char	*ft_itoa_base(intmax_t value, int base, int set)
 {
-	char	*bases;
-	int		almost[64];
-	int		i;
-	int		val;
-	char	*res;
+	char		*bases;
+	int			almost[64];
+	int			i;
+	intmax_t	val;
+	char		*res;
 
 	if (value == -2147483648 || value == 0)
 		return ((value == 0) ? "0" : "-2147483648");
@@ -75,19 +75,19 @@ char	*ft_itoa_base(int value, int base, int set)
 	return (res);
 }
 
-void	usave_line(size_t *val, size_t value, int *i)
+void	usave_line(uintmax_t *val, uintmax_t value, int *i)
 {
 	*val = value;
 	*i = 0;
 }
 
-char	*ft_uitoa_base(size_t value, int base, int set)
+char	*ft_uitoa_base(uintmax_t value, int base, int set)
 {
-	char	*bases;
-	int		almost[64];
-	int		i;
-	size_t	val;
-	char	*res;
+	char		*bases;
+	int			almost[64];
+	int			i;
+	uintmax_t	val;
+	char		*res;
 
 	if (value == 0)
 		return (0);

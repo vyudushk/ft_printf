@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/21 04:16:16 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/21 17:26:04 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int		start_print(int fd, const char *input, va_list args)
 {
-	t_flag	flags;
+	t_flag		flags;
+	t_length	len;
 	int		tab;
 
 	tab = 0;
@@ -47,6 +48,38 @@ int		start_print(int fd, const char *input, va_list args)
 				tab = tab + (*input - '0');
 				input++;
 			}
+			if (*input == 'h')
+			{
+				if (*(input + 1) == 'h')
+				{
+					len.hh = 1;
+					input++;
+				}
+				else
+					len.h = 1;
+				input++;
+			}
+			if (*input == 'l')
+			{
+				if (*(input + 1) == 'l')
+				{
+					len.ll = 1;
+					input++;
+				}
+				else
+					len.l = 1;
+				input++;
+			}
+			if (*input == 'j')
+			{
+				len.j = 1;
+				input++;
+			}
+			if (*input == 'z')
+			{
+				len.z = 1;
+				input++;
+			}
 			if (*input == 's')
 			{
 				ft_putstr_fd(va_arg(args, char*), fd);
@@ -61,31 +94,31 @@ int		start_print(int fd, const char *input, va_list args)
 			}
 			if (*input == 'd' || *input == 'i')
 			{
-				ft_putstr_fd(ft_itoa_base(va_arg(args, int), 10, 1), fd);
+				ft_putstr_fd(ft_itoa_base(set_cast(len, va_arg(args, intmax_t)), 10, 1), fd);
 				input++;
 				continue ;
 			}
 			if (*input == 'o')
 			{
-				ft_putstr_fd(ft_uitoa_base(va_arg(args, size_t), 8, 0), fd);
+				ft_putstr_fd(ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 8, 0), fd);
 				input++;
 				continue ;
 			}
 			if (*input == 'u')
 			{
-				ft_putstr_fd(ft_uitoa_base(va_arg(args, size_t), 10, 0), fd);
+				ft_putstr_fd(ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 10, 0), fd);
 				input++;
 				continue ;
 			}
 			if (*input == 'x')
 			{
-				ft_putstr_fd(ft_uitoa_base(va_arg(args, size_t), 16, 1), fd);
+				ft_putstr_fd(ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 16, 1), fd);
 				input++;
 				continue ;
 			}
 			if (*input == 'X')
 			{
-				ft_putstr_fd(ft_uitoa_base(va_arg(args, size_t), 16, 0), fd);
+				ft_putstr_fd(ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 16, 0), fd);
 				input++;
 				continue ;
 			}
