@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/22 20:44:04 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/22 22:12:48 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,14 @@ int		start_print(int fd, const char *input, va_list args)
 			if (*input == 's')
 			{
 				tmp = va_arg(args, char*);
-				ret += ft_printtab(fd, tab, tmp, flags.tabside);
-				//ft_putstr_fd(tmp, fd);
-				//ret += ft_strlen(tmp);
+				ret += ft_printtab(fd, tab, tmp, flags);
 				input++;
 				continue ;
 			}
 			if (*input == 'p')
 			{
 				tmp = ft_uitoa_base((size_t)va_arg(args, void*), 16, 0);
-				ft_putstr_fd(tmp, fd);
-				ret += ft_strlen(tmp);
+				ret += ft_printtab(fd, tab, tmp, flags);
 				free(tmp);
 				input++;
 				continue ;
@@ -106,8 +103,7 @@ int		start_print(int fd, const char *input, va_list args)
 			if (*input == 'd' || *input == 'i')
 			{
 				tmp = ft_itoa_base(set_cast(len, va_arg(args, intmax_t)), 10, 1);
-				ft_putstr_fd(tmp, fd);
-				ret += ft_strlen(tmp);
+				ret += ft_printtab(fd, tab, tmp, flags);
 				free(tmp);
 				input++;
 				continue ;
@@ -133,9 +129,7 @@ int		start_print(int fd, const char *input, va_list args)
 			if (*input == 'x')
 			{
 				tmp = ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 16, 0);
-				ft_printtab(fd, tab, tmp, flags.tabside);
-				//ft_putstr_fd(tmp, fd);
-				ret += ft_strlen(tmp);
+				ret += ft_printtab(fd, tab, tmp, flags);
 				free(tmp);
 				input++;
 				continue ;

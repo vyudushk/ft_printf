@@ -6,13 +6,13 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/22 20:48:31 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/22 22:11:08 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
-int	ft_printtab(int	fd, int tab, char *str, int mode)
+int	ft_printtab(int	fd, int tab, char *str, t_flag flags)
 {
 	int ret;
 
@@ -20,15 +20,18 @@ int	ft_printtab(int	fd, int tab, char *str, int mode)
 		tab = tab - ft_strlen(str);
 	ret = tab;
 	ret += ft_strlen(str);
-	if (mode == 1)
+	if (flags.tabside == 1)
 		ft_putstr_fd(str, fd);
 	while (tab--)
 	{
-		ft_putchar(' ');
+		if (flags.zerotab)
+			ft_putchar('0');
+		else
+			ft_putchar(' ');
 		if (tab < 0)
 			break ;
 	}
-	if (mode == 0)
+	if (flags.tabside == 0)
 		ft_putstr_fd(str, fd);
 	return (ret);
 }
