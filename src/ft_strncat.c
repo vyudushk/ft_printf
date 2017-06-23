@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 16:58:10 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/03/29 15:30:06 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/23 14:59:46 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	size_t	i;
 	char	*res;
 
-	i = 0;
 	res = s1;
 	while (*s1)
 		s1++;
