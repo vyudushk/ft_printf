@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/23 00:21:45 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/23 01:28:49 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,8 @@ int		start_print(int fd, const char *input, va_list args)
 	{
 		if (*input == '%')
 		{
+			flags.percent = 1;
 			input++;
-			if (*input == '%')
-			{
-				ft_putchar_fd('%', fd);
-				ret++;
-				continue ;
-			}
 			if (*input == '-' && flags.zerotab == 0)
 			{
 				flags.tabside = BACK;
@@ -111,8 +106,7 @@ int		start_print(int fd, const char *input, va_list args)
 			if (*input == 'o')
 			{
 				tmp = ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 8, 0);
-				ft_putstr_fd(tmp, fd);
-				ret += ft_strlen(tmp);
+				ret += ft_printtab(fd, tab, tmp, flags);
 				free(tmp);
 				input++;
 				continue ;
@@ -120,8 +114,15 @@ int		start_print(int fd, const char *input, va_list args)
 			if (*input == 'u')
 			{
 				tmp = ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 10, 0);
-				ft_putstr_fd(tmp, fd);
-				ret += ft_strlen(tmp);
+				ret += ft_printtab(fd, tab, tmp, flags);
+				free(tmp);
+				input++;
+				continue ;
+			}
+			if (*input == 'U')
+			{
+				tmp = ft_uitoa_base((long)va_arg(args, uintmax_t), 10, 0);
+				ret += ft_printtab(fd, tab, tmp, flags);
 				free(tmp);
 				input++;
 				continue ;
@@ -137,16 +138,20 @@ int		start_print(int fd, const char *input, va_list args)
 			if (*input == 'X')
 			{
 				tmp = ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 16, 1);
-				ft_putstr_fd(tmp, fd);
-				ret += ft_strlen(tmp);
+				ret += ft_printtab(fd, tab, tmp, flags);
 				free(tmp);
 				input++;
 				continue ;
 			}
 			if (*input == 'c')
 			{
-				ft_putchar_fd((char)va_arg(args, int),fd);
-				ret++;
+				ret += ft_chartab(fd, tab, (char)va_arg(args, int), flags);
+				input++;
+				continue ;
+			}
+			if (*input == '%' && flags.percent == 1)
+			{
+				ret += ft_chartab(fd, tab, '%', flags);
 				input++;
 				continue ;
 			}
@@ -154,6 +159,7 @@ int		start_print(int fd, const char *input, va_list args)
 		else if (*input)
 		{
 			ft_putchar_fd(*input, fd);
+			flags.percent = 0;
 			ret++;
 		}
 		if (*input == '\0')

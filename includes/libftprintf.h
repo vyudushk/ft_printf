@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/20 16:07:48 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/23 00:22:36 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/23 00:58:53 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_flag
 	int	plus;
 	int	hash;
 	int	space;
+	int	percent;
 }				t_flag;
 
 typedef struct	s_length
@@ -47,5 +48,6 @@ intmax_t	set_cast(t_length len, intmax_t castme);
 uintmax_t	uset_cast(t_length len, uintmax_t castme);
 
 int			ft_printtab(int fd, int tab, char *str, t_flag flags);
+int			ft_chartab(int fd, int tab, char c, t_flag flags);
 
 #endif
