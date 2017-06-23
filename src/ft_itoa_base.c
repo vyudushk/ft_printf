@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 08:06:58 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/21 17:38:51 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/22 20:19:52 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*ft_itoa_base(intmax_t value, int base, int set)
 	char		*res;
 
 	if (value == -2147483648 || value == 0)
-		return ((value == 0) ? "0" : "-2147483648");
+		return ((value == 0) ? ft_strdup("0") : ft_strdup("-2147483648"));
 	bases = set_bases(set);
 	save_line(&val, &value, &i);
 	while (value != 0)
@@ -90,7 +90,7 @@ char	*ft_uitoa_base(uintmax_t value, int base, int set)
 	char		*res;
 
 	if (value == 0)
-		return (0);
+		return (ft_strdup("0"));
 	bases = set_bases(set);
 	usave_line(&val, value, &i);
 	while (value != 0)
