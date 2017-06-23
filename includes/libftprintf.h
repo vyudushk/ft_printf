@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/20 16:07:48 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/22 22:10:02 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/23 00:22:36 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct	s_length
 
 int			ft_printf(const char *input, ...);
 char		*ft_itoa_base(intmax_t value, int base, int set);
-char		*ft_uitoa_base(size_t value, int base, int set);
+char		*ft_uitoa_base(uintmax_t value, int base, int set);
 
 intmax_t	set_cast(t_length len, intmax_t castme);
 uintmax_t	uset_cast(t_length len, uintmax_t castme);
