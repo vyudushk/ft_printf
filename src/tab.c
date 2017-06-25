@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/23 00:56:50 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/24 15:02:51 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_chartab(int fd, int tab, char c, t_flag flags)
 	return (ret);
 }
 
-int	ft_printtab(int	fd, int tab, char *str, t_flag flags)
+int	ft_printtab(int fd, int tab, char *str, t_flag flags)
 {
 	int ret;
 

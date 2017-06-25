@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/20 16:07:48 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/23 00:58:53 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/24 19:02:42 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define FRONT 0
 # define BACK 1
 
-typedef struct s_flag
+typedef struct	s_flag
 {
 	int	tabside;
 	int	zerotab;
@@ -40,14 +40,16 @@ typedef struct	s_length
 	int	z;
 }				t_length;
 
-int			ft_printf(const char *input, ...);
-char		*ft_itoa_base(intmax_t value, int base, int set);
-char		*ft_uitoa_base(uintmax_t value, int base, int set);
+int				ft_printf(const char *input, ...);
+char			*ft_itoa_base(intmax_t value, int base, int set);
+char			*ft_uitoa_base(uintmax_t value, int base, int set);
 
-intmax_t	set_cast(t_length len, intmax_t castme);
-uintmax_t	uset_cast(t_length len, uintmax_t castme);
+intmax_t		set_cast(t_length len, intmax_t castme);
+uintmax_t		uset_cast(t_length len, uintmax_t castme);
 
-int			ft_printtab(int fd, int tab, char *str, t_flag flags);
-int			ft_chartab(int fd, int tab, char c, t_flag flags);
+int				ft_printtab(int fd, int tab, char *str, t_flag flags);
+int				ft_chartab(int fd, int tab, char c, t_flag flags);
+
+void			clear_flags(t_flag *flags);
 
 #endif

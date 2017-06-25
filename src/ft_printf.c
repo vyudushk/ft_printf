@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/23 01:28:49 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/24 19:07:23 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ int		start_print(int fd, const char *input, va_list args)
 			}
 			else
 				flags.tabside = FRONT;
+			if (*input == '+')
+			{
+				flags.plus = 1;
+				input++;
+			}
 			if (*input == '0')
 			{
 				flags.zerotab = 1;
@@ -143,7 +148,7 @@ int		start_print(int fd, const char *input, va_list args)
 				input++;
 				continue ;
 			}
-			if (*input == 'c')
+			if (*input == 'c' || *input == 'C')
 			{
 				ret += ft_chartab(fd, tab, (char)va_arg(args, int), flags);
 				input++;
@@ -158,6 +163,7 @@ int		start_print(int fd, const char *input, va_list args)
 		}
 		else if (*input)
 		{
+			clear_flags(&flags);
 			ft_putchar_fd(*input, fd);
 			flags.percent = 0;
 			ret++;

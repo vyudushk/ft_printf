@@ -6,11 +6,21 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/21 16:33:18 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/21 17:24:35 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/24 19:01:52 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+void		clear_flags(t_flag *flags)
+{
+	flags->tabside = 0;
+	flags->zerotab = 0;
+	flags->plus = 0;
+	flags->hash = 0;
+	flags->space = 0;
+	flags->percent = 0;
+}
 
 intmax_t	set_cast(t_length len, intmax_t castme)
 {
