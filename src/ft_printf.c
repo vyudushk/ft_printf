@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/24 19:40:13 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/25 01:45:32 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,17 @@ int		start_print(int fd, const char *input, va_list args)
 			if (*input == '+')
 			{
 				flags.plus = 1;
+				input++;
+			}
+			if (*input == ' ')
+			{
+				flags.space = 1;
+				while (*input == ' ')
+					input++;
+			}
+			if (*input == '#')
+			{
+				flags.hash = 1;
 				input++;
 			}
 			if (*input == '0')
@@ -102,13 +113,13 @@ int		start_print(int fd, const char *input, va_list args)
 			}
 			if (*input == 'd' || *input == 'i')
 			{
-				tmp = ft_itoa_base(set_cast(len, va_arg(args, intmax_t)), 10, 1);
+				tmp = ft_itoa_base(set_cast(len, va_arg(args, intmax_t)), 10, 1, flags);
 				ret += ft_printtab(fd, tab, tmp, flags);
 				free(tmp);
 				input++;
 				continue ;
 			}
-			if (*input == 'o')
+			if (*input == 'o' && (flags.type = 'o'))
 			{
 				tmp = ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 8, 0);
 				ret += ft_printtab(fd, tab, tmp, flags);
@@ -132,7 +143,7 @@ int		start_print(int fd, const char *input, va_list args)
 				input++;
 				continue ;
 			}
-			if (*input == 'x')
+			if (*input == 'x' && (flags.type = 'x'))
 			{
 				tmp = ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 16, 0);
 				ret += ft_printtab(fd, tab, tmp, flags);
@@ -140,7 +151,7 @@ int		start_print(int fd, const char *input, va_list args)
 				input++;
 				continue ;
 			}
-			if (*input == 'X')
+			if (*input == 'X' && (flags.type = 'X'))
 			{
 				tmp = ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 16, 1);
 				ret += ft_printtab(fd, tab, tmp, flags);
@@ -163,6 +174,7 @@ int		start_print(int fd, const char *input, va_list args)
 		}
 		else if (*input)
 		{
+			flags.type = 0;
 			clear_flags(&flags);
 			ft_putchar_fd(*input, fd);
 			flags.percent = 0;

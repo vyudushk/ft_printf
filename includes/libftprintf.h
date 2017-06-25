@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/20 16:07:48 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/24 19:02:42 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/25 01:45:49 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@
 
 typedef struct	s_flag
 {
-	int	tabside;
-	int	zerotab;
-	int	plus;
-	int	hash;
-	int	space;
-	int	percent;
+	int		tabside;
+	int		zerotab;
+	int		plus;
+	int		hash;
+	int		space;
+	int		percent;
+	char	type;
 }				t_flag;
 
 typedef struct	s_length
@@ -41,7 +42,7 @@ typedef struct	s_length
 }				t_length;
 
 int				ft_printf(const char *input, ...);
-char			*ft_itoa_base(intmax_t value, int base, int set);
+char			*ft_itoa_base(intmax_t value, int base, int set, t_flag flags);
 char			*ft_uitoa_base(uintmax_t value, int base, int set);
 
 intmax_t		set_cast(t_length len, intmax_t castme);

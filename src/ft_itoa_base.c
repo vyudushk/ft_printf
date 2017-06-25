@@ -6,14 +6,14 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 08:06:58 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/22 20:19:52 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/25 01:52:57 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
+#include "libftprintf.h"
 
-char	*setup(int i, intmax_t *val, int base)
+char	*setup(int i, intmax_t *val, int base, t_flag flags)
 {
 	char	*res;
 
@@ -22,6 +22,16 @@ char	*setup(int i, intmax_t *val, int base)
 	if (*val < 0 && base == 10)
 	{
 		res[0] = '-';
+		*val = 1;
+	}
+	else if (flags.plus)
+	{
+		res[0] = '+';
+		*val = 1;
+	}
+	else if (flags.space)
+	{
+		res[0] = ' ';
 		*val = 1;
 	}
 	else
@@ -48,7 +58,7 @@ char	*set_bases(int set)
 	return (res);
 }
 
-char	*ft_itoa_base(intmax_t value, int base, int set)
+char	*ft_itoa_base(intmax_t value, int base, int set, t_flag flags)
 {
 	char		*bases;
 	int			almost[64];
@@ -66,7 +76,7 @@ char	*ft_itoa_base(intmax_t value, int base, int set)
 		value = value / base;
 	}
 	i--;
-	if ((res = setup(i, &val, base)) == 0)
+	if ((res = setup(i, &val, base, flags)) == 0)
 		return (NULL);
 	while (i >= 0)
 		res[val++] = bases[almost[i--]];

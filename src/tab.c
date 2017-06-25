@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/24 15:02:51 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/24 22:49:08 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ int	ft_printtab(int fd, int tab, char *str, t_flag flags)
 	if (tab > 0)
 		ret = tab;
 	ret += ft_strlen(str);
+	if (flags.zerotab == 0 && flags.hash && ft_strcmp(str, "0") != 0)
+	{
+		tab--;
+	}
 	if (flags.tabside == 1)
 		ft_putstr_fd(str, fd);
 	while (tab-- > 0)
