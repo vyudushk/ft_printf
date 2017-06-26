@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/21 16:33:18 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/24 19:01:52 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/25 17:17:35 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void		clear_flags(t_flag *flags)
 
 intmax_t	set_cast(t_length len, intmax_t castme)
 {
-	if (len.hh)
+	if (len.j)
+		return ((intmax_t)castme);
+	else if (len.hh)
 		return ((char)castme);
 	else if (len.h)
 		return ((short)castme);
@@ -32,8 +34,6 @@ intmax_t	set_cast(t_length len, intmax_t castme)
 		return ((long)castme);
 	else if (len.ll)
 		return ((long long)castme);
-	else if (len.j)
-		return ((intmax_t)castme);
 	else if (len.z)
 		return ((size_t)castme);
 	else
