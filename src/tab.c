@@ -6,11 +6,27 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/24 22:49:08 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/25 17:31:26 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+void	dealhash(char **tmp, t_flag flags)
+{
+	char	*freeme;
+
+	if (flags.hash == 0)
+		return ;
+	freeme = *tmp;
+	if (flags.type == 'o')
+		*tmp = ft_strjoin("0", *tmp);
+	if (flags.type == 'x')
+		*tmp = ft_strjoin("0x", *tmp);
+	if (flags.type == 'X')
+		*tmp = ft_strjoin("0X", *tmp);
+	free(freeme);
+}
 
 int	ft_chartab(int fd, int tab, char c, t_flag flags)
 {
@@ -48,12 +64,10 @@ int	ft_printtab(int fd, int tab, char *str, t_flag flags)
 	if (tab > 0)
 		ret = tab;
 	ret += ft_strlen(str);
-	if (flags.zerotab == 0 && flags.hash && ft_strcmp(str, "0") != 0)
-	{
-		tab--;
-	}
 	if (flags.tabside == 1)
 		ft_putstr_fd(str, fd);
+	while (flags.zerotab && (*str == '0' || *str == 'x' || *str == 'X'))
+		ft_putchar_fd(*str++, fd);
 	while (tab-- > 0)
 	{
 		if (flags.zerotab)

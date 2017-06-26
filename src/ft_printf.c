@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/25 01:45:32 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/25 17:25:08 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int		start_print(int fd, const char *input, va_list args)
 			if (*input == 'o' && (flags.type = 'o'))
 			{
 				tmp = ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 8, 0);
+				dealhash(&tmp, flags);
 				ret += ft_printtab(fd, tab, tmp, flags);
 				free(tmp);
 				input++;
@@ -146,6 +147,7 @@ int		start_print(int fd, const char *input, va_list args)
 			if (*input == 'x' && (flags.type = 'x'))
 			{
 				tmp = ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 16, 0);
+				dealhash(&tmp, flags);
 				ret += ft_printtab(fd, tab, tmp, flags);
 				free(tmp);
 				input++;
@@ -154,6 +156,7 @@ int		start_print(int fd, const char *input, va_list args)
 			if (*input == 'X' && (flags.type = 'X'))
 			{
 				tmp = ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 16, 1);
+				dealhash(&tmp, flags);
 				ret += ft_printtab(fd, tab, tmp, flags);
 				free(tmp);
 				input++;
