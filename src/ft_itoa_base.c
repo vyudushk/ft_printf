@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 08:06:58 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/25 01:52:57 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/27 22:01:22 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*setup(int i, intmax_t *val, int base, t_flag flags)
 {
 	char	*res;
 
+	if (*val < 0 || flags.plus || flags.space)
+		i++;
 	if ((res = (char*)malloc(i * sizeof(char))) == 0)
 		return (NULL);
 	if (*val < 0 && base == 10)

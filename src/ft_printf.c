@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/25 17:25:08 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/27 22:04:56 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,10 @@ int		start_print(int fd, const char *input, va_list args)
 			if (*input == 's' || *input == 'S')
 			{
 				tmp = va_arg(args, char*);
-				ret += ft_printtab(fd, tab, tmp, flags);
+				if (tmp == NULL)
+					ret += ft_printtab(fd, tab, "(null)", flags);
+				else
+					ret += ft_printtab(fd, tab, tmp, flags);
 				input++;
 				continue ;
 			}
