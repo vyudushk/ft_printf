@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/29 15:29:47 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/29 15:39:54 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int		start_print(int fd, const char *input, va_list args)
 				}
 			}
 			input += handle_len(input, &len);
-			if (*input == 's' || *input == 'S')
+			if ((*input == 's' || *input == 'S') && (flags.type = 's'))
 			{
 				tmp = va_arg(args, char*);
 				if (tmp == NULL)
