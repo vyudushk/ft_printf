@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 08:06:58 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/28 20:01:04 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/28 20:02:44 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ char	*setup(int i, intmax_t *val, int base, t_flag flags)
 	}
 	else if (flags.plus)
 	{
-//		res[0] = '+';
-//		*val = 1;
+		res[0] = '+';
+		*val = 1;
 	}
 	else if (flags.space)
 	{

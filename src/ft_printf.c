@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/28 18:54:59 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/28 20:03:06 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int		start_print(int fd, const char *input, va_list args)
 
 	tab = 0;
 	ret = 0;
+	clear_len(&len);
+	clear_flags(&flags);
 	while (*input)
 	{
 		if (*input == '%')
