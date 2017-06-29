@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/25 17:31:26 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/28 18:51:33 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	dealhash(char **tmp, t_flag flags)
 {
 	char	*freeme;
 
-	if (flags.hash == 0)
+	if (flags.hash == 0 && flags.type != 'p')
 		return ;
 	freeme = *tmp;
 	if (flags.type == 'o')
@@ -25,6 +25,8 @@ void	dealhash(char **tmp, t_flag flags)
 		*tmp = ft_strjoin("0x", *tmp);
 	if (flags.type == 'X')
 		*tmp = ft_strjoin("0X", *tmp);
+	if (flags.type == 'p')
+		*tmp = ft_strjoin("0x", *tmp);
 	free(freeme);
 }
 
