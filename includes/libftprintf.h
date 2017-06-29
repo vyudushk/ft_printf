@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/20 16:07:48 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/28 18:56:18 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/29 00:40:32 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ typedef struct	s_flag
 
 typedef struct	s_length
 {
-	int	hh;
 	int	h;
 	int	l;
-	int	ll;
 	int	j;
 	int	z;
 }				t_length;

@@ -6,12 +6,27 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/28 20:03:06 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/29 00:42:07 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <unistd.h>
+
+void	handle_len(const char **in, t_length *len)
+{
+	const char	*input;
+
+	input = *in;
+	while (ft_strchr("xSpdDioOuUxXcC", *input) != 0)
+	{
+		len->h += (*input == 'h') ? 1 : 0;
+		len->l += (*input == 'l') ? 1 : 0;
+		len->j += (*input == 'j') ? 1 : 0;
+		len->z += (*input == 'z') ? 1 : 0;
+		input++;
+	}
+}
 
 int		start_print(int fd, const char *input, va_list args)
 {
@@ -66,38 +81,7 @@ int		start_print(int fd, const char *input, va_list args)
 				tab = tab + (*input - '0');
 				input++;
 			}
-			if (*input == 'h')
-			{
-				if (*(input + 1) == 'h')
-				{
-					len.hh = 1;
-					input++;
-				}
-				else
-					len.h = 1;
-				input++;
-			}
-			if (*input == 'l')
-			{
-				if (*(input + 1) == 'l')
-				{
-					len.ll = 1;
-					input++;
-				}
-				else
-					len.l = 1;
-				input++;
-			}
-			if (*input == 'j')
-			{
-				len.j = 1;
-				input++;
-			}
-			if (*input == 'z')
-			{
-				len.z = 1;
-				input++;
-			}
+			handle_len(&input, &len);
 			if (*input == 's' || *input == 'S')
 			{
 				tmp = va_arg(args, char*);
