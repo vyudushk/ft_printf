@@ -6,11 +6,20 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/28 18:53:18 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/28 18:56:42 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+void	handle_p(char **tmp)
+{
+	char	*freeme;
+
+	freeme = *tmp;
+	*tmp = ft_strjoin("0x", *tmp);
+	free(freeme);
+}
 
 void	dealhash(char **tmp, t_flag flags)
 {

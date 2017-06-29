@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/20 16:07:48 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/28 17:15:01 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/28 18:56:18 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ void			clear_flags(t_flag *flags);
 void			dealhash(char **tmp, t_flag flags);
 
 void			clear_len(t_length *len);
+void			handle_p(char **tmp);
 
 #endif
