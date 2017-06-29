@@ -6,19 +6,17 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/29 00:51:19 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/29 01:35:48 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <unistd.h>
 
-size_t		handle_len(const char **in, t_length *len)
+size_t	handle_len(const char *input, t_length *len)
 {
-	const char	*input;
-	size_t		count;
+	size_t	count;
 
-	input = *in;
 	count = 0;
 	while (*input == 'h' || *input == 'l' || *input == 'j' || *input == 'z')
 	{
@@ -28,6 +26,30 @@ size_t		handle_len(const char **in, t_length *len)
 		len->z += (*input == 'z') ? 1 : 0;
 		input++;
 		count++;
+	}
+	return (count);
+}
+
+size_t	handle_flags(const char *input, t_flag *flags)
+{
+	size_t	count;
+
+	count = 0;
+	while (*input == '-' || *input == '+' || *input == '#' || *input == '0')
+	{
+		if (*input == '-' && flags->zerotab == 0)
+			flags->tabside = BACK;
+		else
+			flags->tabside = FRONT;
+		flags->plus += (*input == '+') ? 1 : 0;
+		flags->space += (*input == ' ') ? 1 : 0;
+		flags->hash += (*input == '#') ? 1 : 0;
+		if (*input == '0')
+		{
+			flags->zerotab = 1;
+			flags->tabside = FRONT;
+		}
+		input++;
 	}
 	return (count);
 }
@@ -50,42 +72,14 @@ int		start_print(int fd, const char *input, va_list args)
 		{
 			flags.percent = 1;
 			input++;
-			if (*input == '-' && flags.zerotab == 0)
-			{
-				flags.tabside = BACK;
-				input++;
-			}
-			else
-				flags.tabside = FRONT;
-			if (*input == '+')
-			{
-				flags.plus = 1;
-				input++;
-			}
-			if (*input == ' ')
-			{
-				flags.space = 1;
-				while (*input == ' ')
-					input++;
-			}
-			if (*input == '#')
-			{
-				flags.hash = 1;
-				input++;
-			}
-			if (*input == '0')
-			{
-				flags.zerotab = 1;
-				flags.tabside = FRONT;
-				input++;
-			}
+			input += handle_flags(input, &flags);
 			while (*input >= '0' && *input <= '9')
 			{
 				tab = tab * 10;
 				tab = tab + (*input - '0');
 				input++;
 			}
-			input += handle_len(&input, &len);
+			input += handle_len(input, &len);
 			if (*input == 's' || *input == 'S')
 			{
 				tmp = va_arg(args, char*);
@@ -180,11 +174,9 @@ int		start_print(int fd, const char *input, va_list args)
 		else if (*input)
 		{
 			tab = 0;
-			flags.type = 0;
 			clear_len(&len);
 			clear_flags(&flags);
 			ft_putchar_fd(*input, fd);
-			flags.percent = 0;
 			ret++;
 		}
 		if (*input == '\0')
