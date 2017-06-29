@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/28 19:15:35 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/29 02:01:03 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	dealhash(char **tmp, t_flag flags)
 	free(freeme);
 }
 
-int	ft_chartab(int fd, int tab, char c, t_flag flags)
+int		ft_chartab(int fd, int tab, char c, t_flag flags)
 {
 	int	ret;
 
@@ -63,7 +63,7 @@ int	ft_chartab(int fd, int tab, char c, t_flag flags)
 	return (ret);
 }
 
-int	ft_printtab(int fd, int tab, char *str, t_flag flags)
+int		ft_printtab(int fd, int tab, char *str, t_flag flags)
 {
 	int ret;
 
@@ -75,7 +75,7 @@ int	ft_printtab(int fd, int tab, char *str, t_flag flags)
 	ret += ft_strlen(str);
 	if (flags.tabside == 1)
 		ft_putstr_fd(str, fd);
-	while (flags.zerotab && (*str == '0' || *str == 'x' || *str == 'X'))
+	while (flags.zerotab && (*str== '+' || *str == '0' || *str == 'x' || *str == 'X'))
 		ft_putchar_fd(*str++, fd);
 	while (tab-- > 0)
 	{
