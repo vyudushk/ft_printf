@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/29 01:45:41 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/29 02:30:16 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,6 @@ size_t	handle_flags(const char *input, t_flag *flags)
 		input++;
 		count++;
 	}
-	flags->plus = (flags->plus >= 1) ? 1 : 0;
-	flags->space = (flags->space >= 1) ? 1 : 0;
-	flags->hash = (flags->hash >= 1) ? 1 : 0;
 	return (count);
 }
 
