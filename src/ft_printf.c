@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/28 18:50:57 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/28 18:53:33 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ int		start_print(int fd, const char *input, va_list args)
 			if (*input == 'p')
 			{
 				tmp = ft_uitoa_base((size_t)va_arg(args, void*), 16, 0);
-				dealhash(&tmp, flags);
 				ret += ft_printtab(fd, tab, tmp, flags);
 				free(tmp);
 				input++;
