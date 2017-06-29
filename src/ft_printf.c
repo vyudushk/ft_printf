@@ -6,18 +6,20 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/29 00:44:04 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/29 00:51:19 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <unistd.h>
 
-void	handle_len(const char **in, t_length *len)
+size_t		handle_len(const char **in, t_length *len)
 {
 	const char	*input;
+	size_t		count;
 
 	input = *in;
+	count = 0;
 	while (*input == 'h' || *input == 'l' || *input == 'j' || *input == 'z')
 	{
 		len->h += (*input == 'h') ? 1 : 0;
@@ -25,7 +27,9 @@ void	handle_len(const char **in, t_length *len)
 		len->j += (*input == 'j') ? 1 : 0;
 		len->z += (*input == 'z') ? 1 : 0;
 		input++;
+		count++;
 	}
+	return (count);
 }
 
 int		start_print(int fd, const char *input, va_list args)
@@ -81,7 +85,7 @@ int		start_print(int fd, const char *input, va_list args)
 				tab = tab + (*input - '0');
 				input++;
 			}
-			handle_len(&input, &len);
+			input += handle_len(&input, &len);
 			if (*input == 's' || *input == 'S')
 			{
 				tmp = va_arg(args, char*);
