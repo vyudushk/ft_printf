@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/28 18:56:42 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/28 19:15:35 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	dealhash(char **tmp, t_flag flags)
 {
 	char	*freeme;
 
-	if (flags.hash == 0)
+	if (flags.hash == 0 || ft_strcmp("0", *tmp) == 0)
 		return ;
 	freeme = *tmp;
 	if (flags.type == 'o')
