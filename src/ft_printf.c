@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/28 17:15:24 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/28 18:28:11 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,14 @@ int		start_print(int fd, const char *input, va_list args)
 			if (*input == 'd' || *input == 'i')
 			{
 				tmp = ft_itoa_base(set_cast(len, va_arg(args, intmax_t)), 10, 1, flags);
+				ret += ft_printtab(fd, tab, tmp, flags);
+				free(tmp);
+				input++;
+				continue ;
+			}
+			if (*input == 'D')
+			{
+				tmp = ft_itoa_base((long)len, va_arg(args, intmax_t), 10, 1, flags);
 				ret += ft_printtab(fd, tab, tmp, flags);
 				free(tmp);
 				input++;
