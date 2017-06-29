@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/29 02:30:16 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/29 15:26:21 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,16 @@ int		start_print(int fd, const char *input, va_list args)
 				tab = tab * 10;
 				tab = tab + (*input - '0');
 				input++;
+			}
+			if (*input == '.')
+			{
+				flags.dot = 1;
+				while (*input >= '0' && *input <= '9')
+				{
+					flags.pres = flags.pres * 10;
+					flags.pres = flags.pres + (*input - '0');
+					input++;
+				}
 			}
 			input += handle_len(input, &len);
 			if (*input == 's' || *input == 'S')
