@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/29 01:39:34 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/29 01:45:41 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ size_t	handle_flags(const char *input, t_flag *flags)
 	size_t	count;
 
 	count = 0;
-	while (*input == '-' || *input == '+' || *input == '#' || *input == '0')
+	while (*input == '-' || *input == '+' || *input == '#' || *input == '0'
+			|| *input == ' ')
 	{
 		if (*input == '-' && flags->zerotab == 0)
 			flags->tabside = BACK;
