@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/29 01:35:48 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/29 01:37:29 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ size_t	handle_flags(const char *input, t_flag *flags)
 			flags->tabside = FRONT;
 		}
 		input++;
+		count++;
 	}
 	return (count);
 }
