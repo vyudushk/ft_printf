@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/21 16:33:18 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/25 17:17:35 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/28 17:14:45 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ void		clear_flags(t_flag *flags)
 	flags->hash = 0;
 	flags->space = 0;
 	flags->percent = 0;
+}
+
+void		clear_len(t_length *len)
+{
+	len->hh = 0;
+	len->h = 0;
+	len->l = 0;
+	len->ll = 0;
+	len->j = 0;
+	len->z = 0;
 }
 
 intmax_t	set_cast(t_length len, intmax_t castme)

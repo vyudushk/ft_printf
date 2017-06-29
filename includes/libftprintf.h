@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/20 16:07:48 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/25 17:25:45 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/28 17:15:01 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,7 @@ int				ft_chartab(int fd, int tab, char c, t_flag flags);
 
 void			clear_flags(t_flag *flags);
 void			dealhash(char **tmp, t_flag flags);
+
+void			clear_len(t_length *len);
 
 #endif

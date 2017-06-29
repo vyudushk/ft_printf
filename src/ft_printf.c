@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/27 22:04:56 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/28 17:15:24 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,7 @@ int		start_print(int fd, const char *input, va_list args)
 		else if (*input)
 		{
 			flags.type = 0;
+			clear_len(&len);
 			clear_flags(&flags);
 			ft_putchar_fd(*input, fd);
 			flags.percent = 0;
