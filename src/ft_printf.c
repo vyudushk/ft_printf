@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/28 18:29:33 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/28 18:40:27 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,7 @@ int		start_print(int fd, const char *input, va_list args)
 		}
 		else if (*input)
 		{
+			tab = 0;
 			flags.type = 0;
 			clear_len(&len);
 			clear_flags(&flags);
