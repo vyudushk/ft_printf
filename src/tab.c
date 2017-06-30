@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/29 23:50:18 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/30 01:11:36 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	handledot(char **str, t_flag flags)
 		while (hold--)
 		{
 			*str = ft_strjoin("0", *str);
-			free(freeme);
+//			free(freeme);
 			freeme = *str;
 		}
 	}
