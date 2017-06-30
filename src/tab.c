@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/29 23:14:51 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/29 23:50:18 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,33 @@ int		ft_chartab(int fd, int tab, char c, t_flag flags)
 	return (ret);
 }
 
+void	handledot(char **str, t_flag flags)
+{
+	char	*freeme;
+	int		hold;
+
+	if (flags.dot == 0)
+		return ;
+	freeme = *str;
+	if (ft_strlen(*str) < flags.pres)
+	{
+		hold = flags.pres - ft_strlen(*str);	
+		while (hold--)
+		{
+			*str = ft_strjoin("0", *str);
+			free(freeme);
+			freeme = *str;
+		}
+	}
+}
+
 int		ft_printtab(int fd, int tab, char *str, t_flag flags)
 {
 	int ret;
 	int	track;
 
 	ret = 0;
+	handledot(&str, flags);
 	track = flags.pres;
 	if (tab > 0)
 		tab = tab - ft_strlen(str);
@@ -90,7 +111,7 @@ int		ft_printtab(int fd, int tab, char *str, t_flag flags)
 	}
 	while (flags.zerotab && (*str== '+' || *str == '0' || *str == 'x' || *str == 'X'))
 		ft_putchar_fd(*str++, fd);
-	while (tab-- > 0 || (flags.dot && track-- > 0 && tab > 0))
+	while (tab-- > 0)
 	{
 		if (flags.zerotab)
 			ft_putchar_fd('0', fd);
