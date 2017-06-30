@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/29 15:47:28 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/29 23:04:49 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,12 @@ int		ft_printtab(int fd, int tab, char *str, t_flag flags)
 		{
 			ft_putnstr_fd(str, flags.pres, fd);
 			tab += ft_strlen(str) - flags.pres;
+			ret = ret - ft_strlen(str) + flags.pres;
 		}
 		else
+		{
 			ft_putstr_fd(str, fd);
+		}
 	}
 	while (flags.zerotab && (*str== '+' || *str == '0' || *str == 'x' || *str == 'X'))
 		ft_putchar_fd(*str++, fd);
@@ -96,8 +99,12 @@ int		ft_printtab(int fd, int tab, char *str, t_flag flags)
 	}
 	if (flags.tabside == 0)
 	{
-		if (flags.type == 's' && flags.dot == 1)
+		if (flags.type == 's' && flags.dot == 1 && *str != 0)
+		{
 			ft_putnstr_fd(str, flags.pres, fd);
+			tab += ft_strlen(str) - flags.pres;
+			ret = ret - ft_strlen(str) + flags.pres;
+		}
 		else
 			ft_putstr_fd(str, fd);
 	}
