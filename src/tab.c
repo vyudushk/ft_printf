@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/30 03:47:20 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/30 16:25:18 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	handledot(char **str, t_flag flags)
 		space++;
 	}
 	*str = freeme;
-	if (ft_strlen(*str) < flags.pres)
+	if ((int)ft_strlen(*str) < flags.pres)
 	{
 		hold = flags.pres - ft_strlen(*str);
 		while (hold--)
