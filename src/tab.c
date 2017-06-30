@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/30 03:39:14 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/30 03:47:20 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	handledot(char **str, t_flag flags)
 	}
 }
 
-int		ft_printtab(int fd, int tab, char *str, t_flag flags)
+int		ft_printtab(int fd, char *str, t_flag flags)
 {
 	int ret;
 	int	track;
@@ -104,17 +104,17 @@ int		ft_printtab(int fd, int tab, char *str, t_flag flags)
 	ret = 0;
 	handledot(&str, flags);
 	track = flags.pres;
-	if (tab > 0)
-		tab = tab - ft_strlen(str);
-	if (tab > 0)
-		ret = tab;
+	if (flags.tab > 0)
+		flags.tab = flags.tab - ft_strlen(str);
+	if (flags.tab > 0)
+		ret = flags.tab;
 	ret += ft_strlen(str);
 	if (flags.tabside == 1)
 	{
 		if (flags.type == 's' && flags.dot == 1)
 		{
 			ft_putnstr_fd(str, flags.pres, fd);
-			tab += ft_strlen(str) - flags.pres;
+			flags.tab += ft_strlen(str) - flags.pres;
 			ret = ret - ft_strlen(str) + flags.pres;
 		}
 		else
@@ -123,13 +123,13 @@ int		ft_printtab(int fd, int tab, char *str, t_flag flags)
 	while (flags.zerotab && (*str == '+' || (*str == '0' &&
 					!flags.dot) || *str == 'x' || *str == 'X'))
 		ft_putchar_fd(*str++, fd);
-	while (tab-- > 0)
+	while (flags.tab-- > 0)
 	{
 		if (flags.zerotab && !flags.dot)
 			ft_putchar_fd('0', fd);
 		else
 			ft_putchar_fd(' ', fd);
-		if (tab < 0)
+		if (flags.tab < 0)
 			break ;
 	}
 	if (flags.tabside == 0)
@@ -137,7 +137,7 @@ int		ft_printtab(int fd, int tab, char *str, t_flag flags)
 		if (flags.type == 's' && flags.dot == 1 && *str != 0)
 		{
 			ft_putnstr_fd(str, flags.pres, fd);
-			tab += ft_strlen(str) - flags.pres;
+			flags.tab += ft_strlen(str) - flags.pres;
 			ret = ret - ft_strlen(str) + flags.pres;
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/30 03:43:34 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/30 03:49:35 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,9 @@ int		start_print(int fd, const char *input, va_list args)
 			{
 				tmp = va_arg(args, char*);
 				if (tmp == NULL)
-					ret += ft_printtab(fd, flags.tab, "(null)", flags);
+					ret += ft_printtab(fd, "(null)", flags);
 				else
-					ret += ft_printtab(fd, flags.tab, tmp, flags);
+					ret += ft_printtab(fd, tmp, flags);
 				input++;
 				continue ;
 			}
@@ -105,7 +105,7 @@ int		start_print(int fd, const char *input, va_list args)
 			{
 				tmp = ft_uitoa_base((size_t)va_arg(args, void*), 16, 0);
 				handle_p(&tmp);
-				ret += ft_printtab(fd, flags.tab, tmp, flags);
+				ret += ft_printtab(fd, tmp, flags);
 				free(tmp);
 				input++;
 				continue ;
@@ -113,7 +113,7 @@ int		start_print(int fd, const char *input, va_list args)
 			if (*input == 'd' || *input == 'i')
 			{
 				tmp = ft_itoa_base(set_cast(len, va_arg(args, intmax_t)), 10, 1, flags);
-				ret += ft_printtab(fd, flags.tab, tmp, flags);
+				ret += ft_printtab(fd, tmp, flags);
 				free(tmp);
 				input++;
 				continue ;
@@ -121,7 +121,7 @@ int		start_print(int fd, const char *input, va_list args)
 			if (*input == 'D')
 			{
 				tmp = ft_itoa_base((long)va_arg(args, intmax_t), 10, 1, flags);
-				ret += ft_printtab(fd, flags.tab, tmp, flags);
+				ret += ft_printtab(fd, tmp, flags);
 				free(tmp);
 				input++;
 				continue ;
@@ -130,7 +130,7 @@ int		start_print(int fd, const char *input, va_list args)
 			{
 				tmp = ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 8, 0);
 				dealhash(&tmp, flags);
-				ret += ft_printtab(fd, flags.tab, tmp, flags);
+				ret += ft_printtab(fd, tmp, flags);
 				free(tmp);
 				input++;
 				continue ;
@@ -138,7 +138,7 @@ int		start_print(int fd, const char *input, va_list args)
 			if (*input == 'u')
 			{
 				tmp = ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 10, 0);
-				ret += ft_printtab(fd, flags.tab, tmp, flags);
+				ret += ft_printtab(fd, tmp, flags);
 				free(tmp);
 				input++;
 				continue ;
@@ -146,7 +146,7 @@ int		start_print(int fd, const char *input, va_list args)
 			if (*input == 'U')
 			{
 				tmp = ft_uitoa_base((long)va_arg(args, uintmax_t), 10, 0);
-				ret += ft_printtab(fd, flags.tab, tmp, flags);
+				ret += ft_printtab(fd, tmp, flags);
 				free(tmp);
 				input++;
 				continue ;
@@ -155,7 +155,7 @@ int		start_print(int fd, const char *input, va_list args)
 			{
 				tmp = ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 16, 0);
 				dealhash(&tmp, flags);
-				ret += ft_printtab(fd, flags.tab, tmp, flags);
+				ret += ft_printtab(fd, tmp, flags);
 				free(tmp);
 				input++;
 				continue ;
@@ -164,7 +164,7 @@ int		start_print(int fd, const char *input, va_list args)
 			{
 				tmp = ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 16, 1);
 				dealhash(&tmp, flags);
-				ret += ft_printtab(fd, flags.tab, tmp, flags);
+				ret += ft_printtab(fd, tmp, flags);
 				free(tmp);
 				input++;
 				continue ;

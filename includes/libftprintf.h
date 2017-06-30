@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/20 16:07:48 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/30 03:42:33 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/30 03:48:10 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char			*ft_uitoa_base(uintmax_t value, int base, int set);
 intmax_t		set_cast(t_length len, intmax_t castme);
 uintmax_t		uset_cast(t_length len, uintmax_t castme);
 
-int				ft_printtab(int fd, int tab, char *str, t_flag flags);
+int				ft_printtab(int fd, char *str, t_flag flags);
 int				ft_chartab(int fd, int tab, char c, t_flag flags);
 
 void			clear_flags(t_flag *flags);
