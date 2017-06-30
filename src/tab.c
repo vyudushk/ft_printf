@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/30 01:18:12 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/30 01:19:26 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int		ft_printtab(int fd, int tab, char *str, t_flag flags)
 			ft_putstr_fd(str, fd);
 		}
 	}
-	while (flags.zerotab && (*str== '+' || *str == '0' || *str == 'x' || *str == 'X'))
+	while (flags.zerotab && (*str== '+' || (*str == '0' && !flags.dot) || *str == 'x' || *str == 'X'))
 		ft_putchar_fd(*str++, fd);
 	while (tab-- > 0)
 	{
