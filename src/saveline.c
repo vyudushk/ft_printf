@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnstr_fd.c                                    :+:      :+:    :+:   */
+/*   saveline.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/10 11:55:13 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/30 03:34:41 by vyudushk         ###   ########.fr       */
+/*   Created: 2017/06/30 03:32:56 by vyudushk          #+#    #+#             */
+/*   Updated: 2017/06/30 03:33:09 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libftprintf.h"
 
-void	ft_putnstr_fd(char const *s, int n, int fd)
+void	usave_line(uintmax_t *val, uintmax_t value, int *i)
 {
-	if (s)
-	{
-		write(fd, s, n);
-	}
+	*val = value;
+	*i = 0;
+}
+
+void	save_line(intmax_t *val, intmax_t *value, int *i)
+{
+	*val = *value;
+	*i = 0;
+	if (*value < 0)
+		*value = *value * -1;
 }

@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 08:06:58 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/28 20:02:44 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/30 03:32:52 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,6 @@ char	*setup(int i, intmax_t *val, int base, t_flag flags)
 	else
 		*val = 0;
 	return (res);
-}
-
-void	save_line(intmax_t *val, intmax_t *value, int *i)
-{
-	*val = *value;
-	*i = 0;
-	if (*value < 0)
-		*value = *value * -1;
 }
 
 char	*set_bases(int set)
@@ -85,12 +77,6 @@ char	*ft_itoa_base(intmax_t value, int base, int set, t_flag flags)
 	res[val] = 0;
 	free(bases);
 	return (res);
-}
-
-void	usave_line(uintmax_t *val, uintmax_t value, int *i)
-{
-	*val = value;
-	*i = 0;
 }
 
 char	*ft_uitoa_base(uintmax_t value, int base, int set)
