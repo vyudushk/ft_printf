@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/30 03:49:35 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/30 04:18:45 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,21 @@ size_t	handle_flags(const char *input, t_flag *flags)
 	return (count);
 }
 
+size_t	count(const char *input, int *tab)
+{
+	size_t	ret;
+
+	ret = 0;
+	while (*input >= '0' && *input <= '9')
+	{
+		*tab = *tab * 10;
+		*tab = *tab + (*input - '0');
+		input++;
+		ret++;
+	}
+	return (ret);
+}
+
 int		start_print(int fd, const char *input, va_list args)
 {
 	t_flag		flags;
@@ -73,12 +88,7 @@ int		start_print(int fd, const char *input, va_list args)
 			flags.percent = 1;
 			input++;
 			input += handle_flags(input, &flags);
-			while (*input >= '0' && *input <= '9')
-			{
-				flags.tab = flags.tab * 10;
-				flags.tab = flags.tab + (*input - '0');
-				input++;
-			}
+			input += count(input, &flags.tab);
 			if (*input == '.')
 			{
 				input++;
