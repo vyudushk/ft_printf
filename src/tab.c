@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/30 01:26:11 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/30 03:39:14 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ int		ft_chartab(int fd, int tab, char c, t_flag flags)
 	return (ret);
 }
 
+/*
+** handledot has a major memory leak
+*/
+
 void	handledot(char **str, t_flag flags)
 {
 	char	*freeme;
@@ -81,11 +85,10 @@ void	handledot(char **str, t_flag flags)
 	*str = freeme;
 	if (ft_strlen(*str) < flags.pres)
 	{
-		hold = flags.pres - ft_strlen(*str);	
+		hold = flags.pres - ft_strlen(*str);
 		while (hold--)
 		{
 			*str = ft_strjoin("0", *str);
-//			free(freeme);
 			freeme = *str;
 		}
 		if (space)
@@ -115,11 +118,10 @@ int		ft_printtab(int fd, int tab, char *str, t_flag flags)
 			ret = ret - ft_strlen(str) + flags.pres;
 		}
 		else
-		{
 			ft_putstr_fd(str, fd);
-		}
 	}
-	while (flags.zerotab && (*str== '+' || (*str == '0' && !flags.dot) || *str == 'x' || *str == 'X'))
+	while (flags.zerotab && (*str == '+' || (*str == '0' &&
+					!flags.dot) || *str == 'x' || *str == 'X'))
 		ft_putchar_fd(*str++, fd);
 	while (tab-- > 0)
 	{

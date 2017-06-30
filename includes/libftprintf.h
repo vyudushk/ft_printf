@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/20 16:07:48 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/30 03:33:56 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/30 03:42:33 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct	s_flag
 	char	type;
 	int		dot;
 	size_t	pres;
+	int		tab;
 }				t_flag;
 
 typedef struct	s_length
