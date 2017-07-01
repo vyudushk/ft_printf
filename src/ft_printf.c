@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/30 20:59:12 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/30 21:02:35 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,11 +126,7 @@ int		start_print(int fd, const char *input, va_list args)
 			}
 			if (*input == 'o' && (flags.type = 'o'))
 			{
-				tmp = ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 8, 0);
-				dealhash(&tmp, flags);
-				ret += ft_printtab(fd, tmp, flags);
-				free(tmp);
-				input++;
+				ret += handle_print(ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 8, 0), fd, flags, &input);
 				continue ;
 			}
 			if (*input == 'u')
