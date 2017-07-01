@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/30 19:53:38 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/30 20:15:58 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,32 @@ void	handledot(char **str, t_flag flags)
 	}
 }
 
+int		string_dot(t_flag *flags, char *str, int ret, int fd)
+{
+	if (flags->tabside == 1 && flags->type == 's' && flags->dot == 1)
+	{
+		ft_putnstr_fd(str, flags->pres, fd);
+		flags->tab += ft_strlen(str) - flags->pres;
+		ret = ret - ft_strlen(str) + flags->pres;
+	}
+	else if (flags->tabside == 0 && flags->type == 's'
+			&& flags->dot == 1 && *str != 0)
+	{
+		ft_putnstr_fd(str, flags->pres, fd);
+		flags->tab += ft_strlen(str) - flags->pres;
+		ret = ret - ft_strlen(str) + flags->pres;
+	}
+	else
+		ft_putstr_fd(str, fd);
+	return (ret);
+}
+
+int		ifprefix(t_flag flags, char c)
+{
+	return (flags.zerotab &&
+	(c == '+' || (c == '0' && !flags.dot) || c == 'x' || c == 'X'));
+}
+
 int		ft_printtab(int fd, char *str, t_flag flags)
 {
 	int ret;
@@ -110,38 +136,16 @@ int		ft_printtab(int fd, char *str, t_flag flags)
 		ret = flags.tab;
 	ret += ft_strlen(str);
 	if (flags.tabside == 1)
-	{
-		if (flags.type == 's' && flags.dot == 1)
-		{
-			ft_putnstr_fd(str, flags.pres, fd);
-			flags.tab += ft_strlen(str) - flags.pres;
-			ret = ret - ft_strlen(str) + flags.pres;
-		}
-		else
-			ft_putstr_fd(str, fd);
-	}
-	while (flags.zerotab && (*str == '+' || (*str == '0' &&
-					!flags.dot) || *str == 'x' || *str == 'X'))
+		ret = string_dot(&flags, str, ret, fd);
+	while (ifprefix(flags, *str))
 		ft_putchar_fd(*str++, fd);
 	while (flags.tab-- > 0)
 	{
-		if (flags.zerotab && !flags.dot)
-			ft_putchar_fd('0', fd);
-		else
-			ft_putchar_fd(' ', fd);
+		ft_putchar_fd((flags.zerotab && !flags.dot) ? '0' : ' ', fd);
 		if (flags.tab < 0)
 			break ;
 	}
 	if (flags.tabside == 0)
-	{
-		if (flags.type == 's' && flags.dot == 1 && *str != 0)
-		{
-			ft_putnstr_fd(str, flags.pres, fd);
-			flags.tab += ft_strlen(str) - flags.pres;
-			ret = ret - ft_strlen(str) + flags.pres;
-		}
-		else
-			ft_putstr_fd(str, fd);
-	}
+		ret = string_dot(&flags, str, ret, fd);
 	return (ret);
 }
