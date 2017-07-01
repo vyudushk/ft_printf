@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/30 21:02:35 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/30 21:08:45 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,19 +104,12 @@ int		start_print(int fd, const char *input, va_list args)
 			}
 			if (*input == 'p')
 			{
-				tmp = ft_uitoa_base((size_t)va_arg(args, void*), 16, 0);
-				handle_p(&tmp);
-				ret += ft_printtab(fd, tmp, flags);
-				free(tmp);
-				input++;
+				ret += handle_print(ft_uitoa_base((size_t)va_arg(args, void*), 16, 0), fd, flags, &input);
 				continue ;
 			}
 			if (*input == 'd' || *input == 'i')
 			{
-				tmp = ft_itoa_base(set_cast(len, va_arg(args, intmax_t)), 10, 1, flags);
-				ret += ft_printtab(fd, tmp, flags);
-				free(tmp);
-				input++;
+				ret += handle_print(ft_itoa_base(set_cast(len, va_arg(args, intmax_t)), 10, 1, flags), fd, flags, &input);
 				continue ;
 			}
 			if (*input == 'D')
@@ -131,36 +124,22 @@ int		start_print(int fd, const char *input, va_list args)
 			}
 			if (*input == 'u')
 			{
-				tmp = ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 10, 0);
-				ret += ft_printtab(fd, tmp, flags);
-				free(tmp);
-				input++;
+				ret += handle_print(ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 10, 0), fd, flags, &input);
 				continue ;
 			}
 			if (*input == 'U')
 			{
-				tmp = ft_uitoa_base((long)va_arg(args, uintmax_t), 10, 0);
-				ret += ft_printtab(fd, tmp, flags);
-				free(tmp);
-				input++;
+				ret += handle_print(ft_uitoa_base((long)va_arg(args, uintmax_t), 10, 0), fd, flags, &input);
 				continue ;
 			}
 			if (*input == 'x' && (flags.type = 'x'))
 			{
-				tmp = ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 16, 0);
-				dealhash(&tmp, flags);
-				ret += ft_printtab(fd, tmp, flags);
-				free(tmp);
-				input++;
+				ret += handle_print(ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 16, 0), fd, flags, &input);
 				continue ;
 			}
 			if (*input == 'X' && (flags.type = 'X'))
 			{
-				tmp = ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 16, 1);
-				dealhash(&tmp, flags);
-				ret += ft_printtab(fd, tmp, flags);
-				free(tmp);
-				input++;
+				ret += handle_print(ft_uitoa_base(uset_cast(len, va_arg(args, uintmax_t)), 16, 1), fd, flags, &input);
 				continue ;
 			}
 			if (*input == 'c' || *input == 'C')
