@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/20 16:07:48 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/30 20:18:44 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/30 20:58:17 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,7 @@ void			save_line(intmax_t *val, intmax_t *value, int *i);
 
 int				ifprefix(t_flag flags, char c);
 int				string_dot(t_flag *flags, char *str, int ret, int fd);
+
+int		handle_print(char *tmp, int fd, t_flag flags, const char **input);
 
 #endif
