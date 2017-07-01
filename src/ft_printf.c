@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/16 11:39:37 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/30 21:10:03 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/30 21:11:32 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,10 @@ int		start_print(int fd, const char *input, va_list args)
 			}
 			if (*input == 'p' && (flags.type == 'p'))
 			{
-				ret += handle_print(ft_uitoa_base((size_t)va_arg(args, void*), 16, 0), fd, flags, &input);
+				tmp = ft_uitoa_base((size_t)va_arg(args, void*), 16, 0);
+				handle_p(&tmp);
+				ret += ft_printtab(fd, tmp, flags);
+				input++;
 				continue ;
 			}
 			if (*input == 'd' || *input == 'i')
