@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/21 16:33:18 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/30 03:44:59 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/30 21:15:21 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void		clear_flags(t_flag *flags)
 	flags->dot = 0;
 	flags->pres = 0;
 	flags->tab = 0;
+	flags->type = 0;
 }
 
 void		clear_len(t_length *len)
