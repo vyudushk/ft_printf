@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/20 16:07:48 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/30 16:24:30 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/30 20:18:44 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,8 @@ void			handle_p(char **tmp);
 
 void			usave_line(uintmax_t *val, uintmax_t value, int *i);
 void			save_line(intmax_t *val, intmax_t *value, int *i);
+
+int				ifprefix(t_flag flags, char c);
+int				string_dot(t_flag *flags, char *str, int ret, int fd);
 
 #endif

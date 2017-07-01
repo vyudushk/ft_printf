@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/30 20:15:58 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/06/30 20:18:14 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,32 +94,6 @@ void	handledot(char **str, t_flag flags)
 		if (space)
 			*str = ft_strjoin(" ", *str);
 	}
-}
-
-int		string_dot(t_flag *flags, char *str, int ret, int fd)
-{
-	if (flags->tabside == 1 && flags->type == 's' && flags->dot == 1)
-	{
-		ft_putnstr_fd(str, flags->pres, fd);
-		flags->tab += ft_strlen(str) - flags->pres;
-		ret = ret - ft_strlen(str) + flags->pres;
-	}
-	else if (flags->tabside == 0 && flags->type == 's'
-			&& flags->dot == 1 && *str != 0)
-	{
-		ft_putnstr_fd(str, flags->pres, fd);
-		flags->tab += ft_strlen(str) - flags->pres;
-		ret = ret - ft_strlen(str) + flags->pres;
-	}
-	else
-		ft_putstr_fd(str, fd);
-	return (ret);
-}
-
-int		ifprefix(t_flag flags, char c)
-{
-	return (flags.zerotab &&
-	(c == '+' || (c == '0' && !flags.dot) || c == 'x' || c == 'X'));
 }
 
 int		ft_printtab(int fd, char *str, t_flag flags)
