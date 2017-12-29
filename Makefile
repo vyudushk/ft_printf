@@ -23,6 +23,8 @@ TEST		= runtest
 SRC			= $(addprefix src/, $(FILENAMES))
 OBJ			= $(addprefix build/, $(FILENAMES:.c=.o))
 
+CC			= gcc
+
 .PHONY: all clean fclean re test
 
 all: $(NAME)
@@ -31,16 +33,16 @@ $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ) 
 
 build/%.o: src/%.c | build
-	gcc -g $(FLAGS) -I $(HEADER) -c $^ -o $@
+	$(CC) -g $(FLAGS) -I $(HEADER) -c $^ -o $@
 
 build:
 	mkdir build
 
 test: $(NAME)
-	gcc $(FLAGS) test.c -I $(HEADER) $(NAME) -o $(TEST)
+	$(CC) $(FLAGS) test.c -I $(HEADER) $(NAME) -o $(TEST)
 
 debug: $(NAME)
-	gcc -g $(FLAGS) test.c -I $(HEADER) $(NAME) -o $(TEST)
+	$(CC) -g $(FLAGS) test.c -I $(HEADER) $(NAME) -o $(TEST)
 
 clean:
 	rm -rf build

@@ -6,12 +6,12 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 08:06:58 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/22 20:19:52 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/12/29 15:39:18 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
+#include "libftprintf.h"
 
 char	*setup(int i, intmax_t *val, int base)
 {

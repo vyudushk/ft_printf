@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/20 16:07:48 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/23 00:58:53 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/09/11 17:31:26 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdarg.h>
 # include <stdlib.h>
+# include <stdint.h>
 # include "libft.h"
 
 # define FRONT 0
