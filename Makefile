@@ -14,8 +14,9 @@ FILENAMES	+= ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c
 FILENAMES	+= ft_lstiter.c ft_lstmap.c 
 FILENAMES	+= ft_isupper.c ft_islower.c ft_intlen.c ft_iswhite.c ft_strrev.c
 FILENAMES	+= ft_strndup.c get_next_line.c
+FILENAMES	+= ft_putnstr_fd.c
 
-FILENAMES	+= ft_printf.c ft_itoa_base.c tab.c cast.c
+FILENAMES	+= ft_printf.c ft_itoa_base.c tab.c cast.c saveline.c handle_print.c
 HEADER		= includes
 FLAGS		= -Wall -Wextra -Werror
 TEST		= runtest

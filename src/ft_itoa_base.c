@@ -6,17 +6,19 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 08:06:58 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/12/29 15:39:18 by vlad             ###   ########.fr       */
+/*   Updated: 2017/12/29 15:40:53 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libftprintf.h"
 
-char	*setup(int i, intmax_t *val, int base)
+char	*setup(int i, intmax_t *val, int base, t_flag flags)
 {
 	char	*res;
 
+	if (*val < 0 || flags.plus || flags.space)
+		i++;
 	if ((res = (char*)malloc(i * sizeof(char))) == 0)
 		return (NULL);
 	if (*val < 0 && base == 10)
@@ -24,17 +26,19 @@ char	*setup(int i, intmax_t *val, int base)
 		res[0] = '-';
 		*val = 1;
 	}
+	else if (flags.plus)
+	{
+		res[0] = '+';
+		*val = 1;
+	}
+	else if (flags.space)
+	{
+		res[0] = ' ';
+		*val = 1;
+	}
 	else
 		*val = 0;
 	return (res);
-}
-
-void	save_line(intmax_t *val, intmax_t *value, int *i)
-{
-	*val = *value;
-	*i = 0;
-	if (*value < 0)
-		*value = *value * -1;
 }
 
 char	*set_bases(int set)
@@ -48,7 +52,7 @@ char	*set_bases(int set)
 	return (res);
 }
 
-char	*ft_itoa_base(intmax_t value, int base, int set)
+char	*ft_itoa_base(intmax_t value, int base, int set, t_flag flags)
 {
 	char		*bases;
 	int			almost[64];
@@ -66,19 +70,13 @@ char	*ft_itoa_base(intmax_t value, int base, int set)
 		value = value / base;
 	}
 	i--;
-	if ((res = setup(i, &val, base)) == 0)
+	if ((res = setup(i, &val, base, flags)) == 0)
 		return (NULL);
 	while (i >= 0)
 		res[val++] = bases[almost[i--]];
 	res[val] = 0;
 	free(bases);
 	return (res);
-}
-
-void	usave_line(uintmax_t *val, uintmax_t value, int *i)
-{
-	*val = value;
-	*i = 0;
 }
 
 char	*ft_uitoa_base(uintmax_t value, int base, int set)

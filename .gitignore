@@ -1,3 +1,5 @@
-test.c
 build
 libftprintf.a
+*.swp
+runtest
+test*
