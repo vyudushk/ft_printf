@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/19 17:16:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/06/30 20:18:14 by vyudushk         ###   ########.fr       */
+/*   Updated: 2018/01/02 23:05:04 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,9 @@ void	handledot(char **str, t_flag flags)
 int		ft_printtab(int fd, char *str, t_flag flags)
 {
 	int ret;
-	int	track;
 
 	ret = 0;
 	handledot(&str, flags);
-	track = flags.pres;
 	if (flags.tab > 0)
 		flags.tab = flags.tab - ft_strlen(str);
 	if (flags.tab > 0)
